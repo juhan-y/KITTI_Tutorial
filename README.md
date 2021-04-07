@@ -1,42 +1,26 @@
-# KITTI Tutorial
+# KITTI Data Set
+    
   
-## Introduction  
-  
->This is personal result for studying Self-Driving Techs. In this tutorial, I'll upload various codes from basic methods(e.g. lidar point projection) to state-of-the-art techs(e.g. deeplearning-based vehicle detection). Mainly, 'velodyne, camera' data-based approach will be discussed but when the time allows, I'll treat stereo vision, too. Also, Kitti-dataset-related simple codes(e.g. load tracklet or velodyne points) are in [`kitti_foundation.py`](kitti_foundation.py) coded by myself.  
-  
-Before start,  
- 
-* [KITTI site](www.cvlibs.net/datasets/kitti/) 
-* refer to [KITTI Dataset Paper](http://www.cvlibs.net/publications/Geiger2013IJRR.pdf) for the details of data measurement environment  
-  
-   
-## Dataset  
- 
-[KITTI 2011_09_26_drive_0005 dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php?type=city) 
- 
-## tutorials
+kitti 데이터셋: kitti dataset은 자율주행 플랫폼을 위한 vision task를 포함하고 있다.
+2D, 3D, Lidar와 같은 여러 버전의 dataset이 존재한다. dataset의 구성은 training 파일에서 image파일은 7481개를 갖고 있으며,
+label 파일이 txt파일도 그에 맞는 7481개를 가진다.
+testing을 위한 dataset은 image파일이 7518개 있다. testing 파일은 labelling되어 있지않아
+라벨 파일인 txt파일이 존재하지 않는다. 사용자가 원할 시에 직접 labelling을 통해 txt파일을 생성시켜줘야 한다. 
+추가적으로 설명하면 kitti dataset의 수집 위치는 독일이며, 
+그 이유로 인해 한국과는 다른 환경에서 데이터가 수집되었으므로 데이터셋이 일반성을 가지지 못해
+한국과 같은 다른 나라에서는 독일에서는 인지했던 표지판이나 버스, 화물차 등을 인지하지 못할 수도 있다는 단점이 있다.
+labelling을 통한 라벨이 저장된 txt파일 안에는 객체를 인지하는 바운딩 박스의 왼쪽 위 지점과 오른쪽 아래 지점의 좌표를 가지고 있다.
+kitti dataset의 여러 버전들을 이용해서 여러 가지의 형태로 image를 변환하는 튜토리얼을 다른 사람의 git에서 가져왔다.
+내용은 ladar로 수집된 data를 파노마라형식의 image로, top-view로, 투영된 사진으로 변환시키는 튜토리얼이 있으며, 
+3D상의 image에서 객체를 추적하는 튜토리얼도 있다.
+모두 파이썬파일로 코드가 구현되어있다.
 
-[`Velodyne -> Panoramic Image`](Convert_Velo_2_Pano.ipynb) : Convert Velodyne data(model : HDL-64E) to panoramic image.  
-<p align="center">
-    <img src="images/pano.jpg" width="680" alt="panorama_image" /><br>
-</p>  
-  
-[`Velodyne -> Top-View Image`](Convert_Velo_2_Topview.ipynb) : Convert Velodyne data(model : HDL-64E) to Top-view image.    
-<p align="center">
-    <img src="images/topview.jpg" height="100" alt="topview_image" /><br>
-</p>  
-  
-[`Velodyne to Image Projection`](velo2cam_projection.ipynb) : Project Velodyne points(model : HDL-64E) to camera Image.  
-<p align="center">
-    <img src="images/projection.jpg" height="100" alt="projection_image" /><br>
-</p>  
-  
-[`Display 3D Tracklet`](display_groundtruth.ipynb) : Display 3D Tracklet on image  
-<p align="center">
-    <img src="images/tracklet.jpg" height="100" alt="tracklet_image" /><br>
-</p>  
-  
-  
-  
-## Contributions / Comments  
-always welcome any kind of comments and pull-requests
+![image](https://user-images.githubusercontent.com/81463668/113805825-2ec09f00-979c-11eb-9c1a-e4d5e63adeea.png)
+
+<kitti dataset중 3D>
+
+![image](https://user-images.githubusercontent.com/81463668/113805829-32ecbc80-979c-11eb-8627-1c1b0c2afe17.png)
+
+
+<kitti dataset중 2D>
+Faster R-CNN, YOLOv3, YOLOv2 알고리즘을 적용하고 객체가 차량, 보행자, 여러 가지혼합된 경우일때의 image이다.
